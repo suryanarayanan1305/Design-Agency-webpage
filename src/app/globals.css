@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-warm: #F2EFE8;
+    --bg-dark: #121212;
+    --text-primary: #121212;
+    --text-muted: #73736C;
+    --accent-coral: #FF5733;
+    --accent-lime: #C7F36B;
+    --border-subtle: rgba(18, 18, 18, 0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-warm);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent-coral);
+    color: #FFFFFF;
+  }
+}
+
+/* Custom editorial typography utilities */
+.font-display {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-serif-accent {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+}
+
+/* Subtle grid backdrop for architectural agency aesthetic */
+.bg-agency-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(18, 18, 18, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 18, 18, 0.04) 1px, transparent 1px);
+}
+
+.bg-dark-grid {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}

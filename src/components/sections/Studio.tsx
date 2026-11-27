@@ -2,7 +2,7 @@
 
 import React from "react";
 import ScrollHighlightText from "@/components/ui/ScrollHighlightText";
-import { Compass, Terminal, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export default function Studio() {
   const principles = [
@@ -34,15 +34,15 @@ export default function Studio() {
       <div className="max-w-7xl mx-auto">
         {/* Editorial Sub-badge */}
         <div className="flex items-center gap-3 mb-6">
-          <span className="font-serif-editorial text-sm italic text-[var(--accent-coral)]">
+          <span className="font-serif-editorial text-sm italic text-[var(--accent-coral)] font-semibold">
             Studio Philosophy
           </span>
-          <span className="text-xs text-[var(--text-muted)] uppercase tracking-widest">
+          <span className="text-xs text-[var(--text-muted)] uppercase tracking-widest font-medium">
             / Architectural Foundations
           </span>
         </div>
 
-        {/* Scroll-Driven Highlighted Headline */}
+        {/* Scroll-Driven Highlighted Headline with guaranteed base contrast */}
         <div className="mb-20 max-w-5xl">
           <ScrollHighlightText
             className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.12] text-[var(--text-primary)]"
@@ -55,16 +55,16 @@ export default function Studio() {
           </p>
         </div>
 
-        {/* 3 Principles with Scroll Progressive Highlight & Refined Editorial Typography */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-[var(--border-color)]">
+        {/* 3 Principles with Refined Editorial Numbering & High Contrast */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-[var(--border-color)]">
           {principles.map((principle, index) => (
             <div
               key={principle.number}
               className="p-8 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] shadow-sm hover:border-[var(--accent-coral)]/40 transition-all flex flex-col justify-between"
             >
               <div className="space-y-4">
-                {/* Refined Small Editorial Number (No boxy badges) */}
-                <span className="font-serif-editorial text-xl italic text-[var(--accent-coral)] block">
+                {/* Refined Small Editorial Number */}
+                <span className="font-serif-editorial text-2xl italic text-[var(--accent-coral)] font-bold block">
                   {principle.number} —
                 </span>
 
@@ -72,17 +72,16 @@ export default function Studio() {
                   {principle.title}
                 </h3>
 
-                <ScrollHighlightText
-                  className="text-sm text-[var(--text-muted)] leading-relaxed font-sans"
-                  serifItalicIndices={index === 1 ? [9] : []}
-                >
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed font-sans font-normal">
                   {principle.description}
-                </ScrollHighlightText>
+                </p>
               </div>
 
               <div className="pt-6 mt-6 border-t border-[var(--border-color)] flex items-center justify-between text-xs text-[var(--text-muted)]">
-                <span className="font-medium uppercase tracking-wider text-[11px]">FORMORA Principle</span>
-                <Sparkles className="w-3.5 h-3.5 text-[var(--accent-coral)] opacity-60" />
+                <span className="font-semibold uppercase tracking-wider text-[11px] text-[var(--text-primary)]/70">
+                  FORMORA Principle
+                </span>
+                <Sparkles className="w-3.5 h-3.5 text-[var(--accent-coral)]" />
               </div>
             </div>
           ))}

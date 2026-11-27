@@ -19,30 +19,40 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Check localStorage first
     const savedTheme = localStorage.getItem("formora-theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+    let initialTheme: Theme = "light";
+
+    if (savedTheme === "dark" || savedTheme === "light") {
+      initialTheme = savedTheme;
     } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      // Default to light as requested in user prompt, but allow saving
-      document.documentElement.classList.remove("dark");
+      // Default to light as required by specification, but respect if user previously chose dark
+      initialTheme = "light";
     }
+
+    setTheme(initialTheme);
+    applyThemeToDOM(initialTheme);
     setMounted(true);
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme: Theme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("formora-theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
+  const applyThemeToDOM = (t: Theme) => {
+    const root = document.documentElement;
+    if (t === "dark") {
+      root.classList.add("dark");
+      root.setAttribute("data-theme", "dark");
+      root.style.colorScheme = "dark";
     } else {
-      document.documentElement.classList.remove("dark");
+      root.classList.remove("dark");
+      root.setAttribute("data-theme", "light");
+      root.style.colorScheme = "light";
     }
+  };
+
+  const toggleTheme = () => {
+    const nextTheme: Theme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    localStorage.setItem("formora-theme", nextTheme);
+    applyThemeToDOM(nextTheme);
   };
 
   return (

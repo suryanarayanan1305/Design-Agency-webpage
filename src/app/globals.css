@@ -1,50 +1,65 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --bg-page: #F2EFE8;
-    --text-primary: #121212;
-    --text-muted: #6E6E66;
-    --accent-coral: #FF5733;
-    --accent-lime: #C7F36B;
-    --border-color: rgba(18, 18, 18, 0.12);
-    --card-bg: #FFFFFF;
-    --card-border: rgba(18, 18, 18, 0.10);
-    --surface-dark: #121212;
-    --surface-dark-card: #1C1C1C;
-    --header-bg: rgba(242, 239, 232, 0.88);
-  }
+:root {
+  /* Light theme variables */
+  --bg-page: #F2EFE8;
+  --bg-secondary: #E9E5DC;
+  --text-primary: #171717;
+  --text-muted: #77766F;
+  --accent-coral: #FF553D;
+  --accent-lime: #A3E635;
+  --border-color: #D9D5CB;
+  --card-bg: #FFFFFF;
+  --card-border: rgba(18, 18, 18, 0.08);
+  --header-bg: rgba(242, 239, 232, 0.90);
+  --input-bg: rgba(255, 255, 255, 0.85);
+  --surface-dark: #171717;
+  --surface-dark-card: #222222;
+  --btn-primary-bg: #171717;
+  --btn-primary-text: #F2EFE8;
+  --btn-secondary-bg: rgba(18, 18, 18, 0.06);
+  --btn-secondary-text: #171717;
+  --btn-secondary-border: rgba(18, 18, 18, 0.15);
+}
 
-  html.dark {
-    --bg-page: #0C0C0C;
-    --text-primary: #F2EFE8;
-    --text-muted: #9E9E94;
-    --accent-coral: #FF6847;
-    --accent-lime: #C7F36B;
-    --border-color: rgba(255, 255, 255, 0.12);
-    --card-bg: #141414;
-    --card-border: rgba(255, 255, 255, 0.12);
-    --surface-dark: #080808;
-    --surface-dark-card: #161616;
-    --header-bg: rgba(12, 12, 12, 0.88);
-  }
+html.dark,
+[data-theme="dark"] {
+  /* Dark theme variables */
+  --bg-page: #111210;
+  --bg-secondary: #191A18;
+  --text-primary: #F4F1EA;
+  --text-muted: #A6A69E;
+  --accent-coral: #FF6347;
+  --accent-lime: #C7F36B;
+  --border-color: #33352F;
+  --card-bg: #1C1D1A;
+  --card-border: rgba(255, 255, 255, 0.10);
+  --header-bg: rgba(17, 18, 16, 0.90);
+  --input-bg: #22231F;
+  --surface-dark: #111210;
+  --surface-dark-card: #191A18;
+  --btn-primary-bg: #F4F1EA;
+  --btn-primary-text: #111210;
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-text: #F4F1EA;
+  --btn-secondary-border: rgba(255, 255, 255, 0.20);
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    background-color: var(--bg-page);
-    color: var(--text-primary);
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
 
-  ::selection {
-    background-color: var(--accent-coral);
-    color: #FFFFFF;
-  }
+::selection {
+  background-color: var(--accent-coral);
+  color: #FFFFFF;
 }
 
 /* Editorial typography utilities with Manrope & Instrument Serif */
@@ -63,26 +78,28 @@
 
 /* Giant outlined footer wordmark like Philotium */
 .text-outline-giant {
-  -webkit-text-stroke: 1.5px rgba(18, 18, 18, 0.35);
+  -webkit-text-stroke: 1.5px rgba(23, 23, 23, 0.35);
   color: transparent;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html.dark .text-outline-giant {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.30);
+html.dark .text-outline-giant,
+[data-theme="dark"] .text-outline-giant {
+  -webkit-text-stroke: 1.5px rgba(244, 241, 234, 0.35);
   color: transparent;
 }
 
 .text-outline-giant:hover {
   -webkit-text-stroke: 1.5px var(--accent-coral);
-  color: rgba(255, 87, 51, 0.04);
+  color: rgba(255, 85, 61, 0.06);
 }
 
-/* Subtle ambient backdrop lighting */
+/* Subtle ambient glow */
 .ambient-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(255, 87, 51, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(255, 85, 61, 0.09) 0%, transparent 70%);
 }
 
-html.dark .ambient-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(255, 87, 51, 0.12) 0%, transparent 70%);
+html.dark .ambient-glow,
+[data-theme="dark"] .ambient-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(255, 99, 71, 0.14) 0%, transparent 70%);
 }

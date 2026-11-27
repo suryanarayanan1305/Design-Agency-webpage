@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ui/ThemeContext";
+import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 
 export const metadata: Metadata = {
   title: "FORMORA® | Independent Creative & Digital Experience Studio",
@@ -51,6 +52,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
+          {/* Top Real-time Scroll Progress Indicator */}
+          <ScrollProgressBar />
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUp, ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState<number>(2026);
@@ -131,7 +131,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Technical Statement & Back to Top */}
-        <div className="pt-6 pb-10 flex flex-col md:flex-row items-center justify-between gap-5 text-xs text-[var(--text-muted)] font-sans">
+        <div className="pt-6 pb-8 flex flex-col md:flex-row items-center justify-between gap-5 text-xs text-[var(--text-muted)] font-sans">
           <div className="flex flex-wrap items-center gap-3">
             <span>© {currentYear} FORMORA® Digital Studio. All rights reserved.</span>
             <span className="opacity-30 hidden sm:inline">•</span>
@@ -150,9 +150,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Massive Outlined Brand Wordmark fitting the viewport without clipping or horizontal overflow */}
-      <div className="w-full overflow-hidden select-none pointer-events-none leading-none -mb-3 sm:-mb-6 md:-mb-8">
-        <h1 className="text-outline-giant font-display text-[clamp(2.8rem,14.5vw,13rem)] font-black tracking-tight text-center whitespace-nowrap block w-full px-4">
+      {/* Massive Outlined Brand Wordmark inspired by Philotium: Spans viewport edge-to-edge, dominant, perfectly fluid */}
+      <div className="w-full overflow-hidden select-none pointer-events-none leading-[0.82] flex justify-center items-end mt-4">
+        <h1 className="text-outline-giant font-display text-[clamp(4.2rem,20.2vw,19.5rem)] font-black tracking-[-0.05em] text-center whitespace-nowrap block w-full m-0 p-0 transform translate-y-[8%]">
           FORMORA
         </h1>
       </div>

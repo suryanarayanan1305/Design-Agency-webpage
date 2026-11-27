@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUp, ArrowUpRight, Heart, Globe, Terminal, ShieldCheck } from "lucide-react";
+import { ArrowUp, ArrowUpRight, ExternalLink } from "lucide-react";
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = React.useState<number>(2026);
+  const [currentYear, setCurrentYear] = useState<number>(2026);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
@@ -16,73 +16,78 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#121212] text-[#F2EFE8] pt-24 pb-12 border-t border-white/10 relative overflow-hidden">
-      {/* Editorial Decorative Grid */}
-      <div className="absolute inset-0 bg-dark-grid opacity-30 pointer-events-none" />
-
+    <footer className="bg-[var(--bg-page)] text-[var(--text-primary)] pt-24 pb-0 border-t border-[var(--border-color)] relative overflow-hidden transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 relative z-10">
         {/* Top Callout & Wordmark */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-white/10">
-          <div className="lg:col-span-6 space-y-6">
-            <span className="font-mono text-xs text-[#FF5733] tracking-widest uppercase font-semibold">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-20 border-b border-[var(--border-color)]">
+          <div className="lg:col-span-6 space-y-5">
+            <span className="font-serif-editorial text-sm italic text-[var(--accent-coral)]">
               Independent Creative Studio
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-              FORMORA<span className="text-[#FF5733]">®</span>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-tight">
+              FORMORA<span className="text-[var(--accent-coral)] font-serif-editorial">®</span>
             </h2>
-            <p className="text-white/60 text-base max-w-md leading-relaxed font-sans">
+            <p className="text-[var(--text-muted)] text-base max-w-md leading-relaxed font-sans">
               Shaping iconic digital brands, building responsive modern web flagships, and turning bold ideas into meaningful interactions.
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#C7F36B] animate-pulse" />
-              <span className="font-mono text-xs text-white/70 tracking-wider">
-                Studio operating from Tokyo, Berlin &amp; Remote Worldwide
-              </span>
+            <div className="flex items-center gap-3 pt-2 text-xs text-[var(--text-muted)]">
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-lime)] animate-pulse" />
+              <span>Studio operating from India &amp; Remote Worldwide</span>
             </div>
           </div>
 
           <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {/* Quick Links */}
             <div>
-              <p className="font-mono text-xs uppercase text-white/40 mb-4 tracking-wider">
+              <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] mb-4 font-semibold font-sans">
                 Index
               </p>
               <ul className="space-y-2.5 text-sm">
                 <li>
-                  <Link href="#studio" className="hover:text-[#FF5733] transition-colors">
+                  <Link href="#studio" className="hover:text-[var(--accent-coral)] transition-colors">
                     The Studio
                   </Link>
                 </li>
                 <li>
-                  <Link href="#services" className="hover:text-[#FF5733] transition-colors">
+                  <Link href="#services" className="hover:text-[var(--accent-coral)] transition-colors">
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="#work" className="hover:text-[#FF5733] transition-colors">
+                  <Link href="#work" className="hover:text-[var(--accent-coral)] transition-colors">
                     Selected Work
                   </Link>
                 </li>
                 <li>
-                  <Link href="#contact" className="hover:text-[#FF5733] transition-colors">
+                  <Link href="#contact" className="hover:text-[var(--accent-coral)] transition-colors">
                     Inquiries
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Social Channels */}
+            {/* Channels & Portfolio */}
             <div>
-              <p className="font-mono text-xs uppercase text-white/40 mb-4 tracking-wider">
+              <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] mb-4 font-semibold font-sans">
                 Channels
               </p>
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <a
+                    href="https://surya-narayanan-portfolio.onrender.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-medium text-[var(--accent-coral)] hover:underline"
+                  >
+                    Developer Portfolio <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="https://github.com/suryanarayanan1305/Design-Agency-webpage"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:text-[#C7F36B] transition-colors"
+                    className="inline-flex items-center gap-1 hover:text-[var(--accent-coral)] transition-colors"
                   >
                     GitHub <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
@@ -92,66 +97,55 @@ export default function Footer() {
                     href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:text-[#C7F36B] transition-colors"
+                    className="inline-flex items-center gap-1 hover:text-[var(--accent-coral)] transition-colors"
                   >
                     LinkedIn <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://dribbble.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:text-[#C7F36B] transition-colors"
-                  >
-                    Dribbble <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:text-[#C7F36B] transition-colors"
-                  >
-                    X (Twitter) <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Evaluation Notes */}
+            {/* Assignment Specs */}
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-mono text-xs uppercase text-white/40 mb-4 tracking-wider">
+              <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] mb-4 font-semibold font-sans">
                 Assignment
               </p>
-              <div className="text-xs text-white/60 space-y-2">
-                <p className="font-medium text-white/90">Weboin Technologies Pvt Ltd</p>
-                <p>Role: React / Next.js Developer Intern</p>
-                <span className="inline-block mt-2 px-2.5 py-1 rounded bg-white/10 text-[11px] font-mono text-[#C7F36B]">
-                  Next.js 15+ App Router
+              <div className="text-xs text-[var(--text-muted)] space-y-2 font-sans">
+                <p className="font-semibold text-[var(--text-primary)]">Weboin Technologies</p>
+                <p>Role: Next.js / React Intern</p>
+                <span className="inline-block mt-2 px-2.5 py-1 rounded-full bg-black/5 dark:bg-white/10 text-[11px] font-mono text-[var(--accent-coral)]">
+                  Next.js 16 App Router
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-white/50">
+        {/* Bottom Technical Statement & Back to Top */}
+        <div className="pt-8 pb-12 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-[var(--text-muted)] font-sans">
           <div className="flex flex-wrap items-center gap-4">
             <span>© {currentYear} FORMORA® Digital Studio. All rights reserved.</span>
-            <span className="hidden sm:inline text-white/20">•</span>
-            <span className="font-mono">Engineered with Next.js 16, React 19 &amp; Tailwind CSS</span>
+            <span className="opacity-30 hidden sm:inline">•</span>
+            <span className="font-medium tracking-wide">
+              ENGINEERED WITH NEXT.JS 16 &amp; REACT 19
+            </span>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 hover:border-[#FF5733] hover:text-[#FF5733] transition-colors font-mono uppercase tracking-wider text-[11px]"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border-color)] hover:border-[var(--accent-coral)] hover:text-[var(--accent-coral)] transition-colors uppercase tracking-wider text-[11px] font-semibold cursor-pointer"
           >
             Back to Top
             <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
+      </div>
+
+      {/* Massive Outlined Brand Wordmark like Philotium (Partially Cropped by Viewport) */}
+      <div className="w-full overflow-hidden select-none pointer-events-none leading-none -mb-8 sm:-mb-14 md:-mb-20">
+        <h1 className="text-outline-giant font-display text-[19vw] font-black tracking-tight text-center whitespace-nowrap">
+          FORMORA
+        </h1>
       </div>
     </footer>
   );
